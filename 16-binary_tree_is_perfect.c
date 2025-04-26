@@ -1,5 +1,5 @@
 #include "binary_trees.h"
-#include "9-binary_tree_height.c"
+#include "9-binary_tree_height.c" /* Include height function for calculations */
 
 /**
  * binary_tree_is_perfect - checks if a binary tree is perfect
@@ -8,15 +8,22 @@
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int left_height, right_height;
+	int left_height, right_height; /* Heights of left and right subtrees */
 
-	if (tree == NULL)
-		return (0);
+	if (tree == NULL) /* Check if tree is NULL */
+	{
+		return (0); /* Tree is not perfect if NULL */
+	}
 
+	/* Calculate the height of left and right subtrees */
 	left_height = binary_tree_height(tree->left);
 	right_height = binary_tree_height(tree->right);
 
+	/* Check if left and right subtree heights are equal */
 	if (left_height == right_height)
-		return (1);
-	return (0);
+	{
+		return (1); /* Tree is perfect if heights are equal */
+	}
+
+	return (0); /* Tree is not perfect if heights differ */
 }
